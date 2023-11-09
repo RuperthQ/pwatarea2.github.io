@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Juego de Preguntas y Respuestas</title>
+</head>
+
+<style>
+  #pregunta {
+    width: 400px;
+    height: 200px;
+    border: 1px solid #000000;
+    margin: 0 auto;
+  }
+
+  #respuestas {
+    width: 400px;
+    margin: 0 auto;
+  }
+
+  input[type="radio"] {
+    margin-right: 10px;
+  }
+
+  button {
+    width: 100px;
+    height: 30px;
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+  }
+</style>
+
+<body>
+  <h1>Juego de Preguntas y Respuestas</h1>
+  <div id="pregunta">
+  </div>
+  <div id="respuestas">
+    <input type="radio" name="respuesta" value="1">
+    <label for="respuesta1">Respuesta 1</label>
+    <input type="radio" name="respuesta" value="2">
+    <label for="respuesta2">Respuesta 2</label>
+    <input type="radio" name="respuesta" value="3">
+    <label for="respuesta3">Respuesta 3</label>
+  </div>
+  <button id="siguiente">Siguiente</button>
+  
+  <script>
+    const pregunta = document.querySelector("#pregunta");
+      const respuestas = document.querySelector("#respuestas");
+      const siguiente = document.querySelector("#siguiente");
+
+      const preguntas = [
+        {
+          pregunta: "¿Cuál es la capital de España?",
+          respuestas: ["Madrid", "Barcelona", "Valencia"],
+          respuestaCorrecta: 1
+        },
+        {
+          pregunta: "¿Cuál es el número más grande?",
+          respuestas: ["1", "2", "3"],
+          respuestaCorrecta: 3
+        },
+        {
+          pregunta: "¿Cuál es el color del cielo?",
+          respuestas: ["Azul", "Rojo", "Verde"],
+          respuestaCorrecta: 1
+        }
+      ];
+
+      let preguntaActual = 0;
+      let puntuacion = 0;
+
+      function mostrarPregunta() {
+        pregunta.textContent = preguntas[preguntaActual].pregunta;
+        respuestas.querySelectorAll("input").forEach((input) => {
+          input.value = preguntas[preguntaActual].respuestas[input.value];
+        });
+      }
+
+      function evaluarRespuesta() {
+        const respuestaSeleccionada = respuestas.querySelector("input:checked").value;
+        if (respuestaSeleccionada === preguntas[preguntaActual].respuestaCorrecta) {
+          puntuacion++;
+        }
+        preguntaActual++;
+        if (preguntaActual < preguntas.length) {
+          mostrarPregunta();
+        } else {
+          mostrarPuntuacion();
+        }
+      }
+
+      siguiente.addEventListener("click", evaluarRespuesta);
+
+      function mostrarPuntuacion() {
+        const divPuntuacion = document.createElement("div");
+        divPuntuacion.textContent = "Puntuación: " + puntuacion;
+        document.body.appendChild(divPuntuacion);
+      }
+
+      mostrarPregunta();
+  </script>
+</body>
+
+</html>

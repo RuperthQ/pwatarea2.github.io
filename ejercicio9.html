@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Temporizador de Cuenta Regresiva</title>
+</head>
+
+<style>
+  #cuenta-regresiva {
+    width: 200px;
+    height: 100px;
+    border: 1px solid #000000;
+    font-size: 50px;
+  }
+</style>
+
+<body>
+  <h1>Temporizador de Cuenta Regresiva</h1>
+  <div id="cuenta-regresiva"></div>
+</body>
+
+<script>
+  const cuentaRegresiva = document.querySelector("#cuenta-regresiva");
+  
+  // const timeZoneOffset = -5 * 60;
+  
+  const tiempoFinal = new Date(2023, 11, 9, 23, 59, 59 + timeZoneOffset * 60000);
+
+  function actualizarCuentaRegresiva() {
+    const tiempoActual = new Date();
+    const tiempoRestante = tiempoFinal - tiempoActual;
+
+    const horas = new Date(tiempoRestante).getUTCHours();
+    const minutos = new Date(tiempoRestante).getUTCMinutes();
+    const segundos = new Date(tiempoRestante).getUTCSeconds();
+
+    cuentaRegresiva.textContent = `${horas}:${minutos}:${segundos}`;
+
+    if (tiempoRestante < 0) {
+      cuentaRegresiva.textContent = "¡Ya pasó!";
+      } else {
+        setTimeout(actualizarCuentaRegresiva, 1000);
+      }
+    }
+
+  actualizarCuentaRegresiva();
+</script>
+
+</html>
