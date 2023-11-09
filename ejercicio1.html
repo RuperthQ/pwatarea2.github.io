@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Cambio de Estilo al Clic</title>
+</head>
+
+<style>
+  #contenedor {
+  width: 400px;
+  height: 200px;
+  background-color: #ffffff;
+  margin: 0 auto;
+  padding: 15px;
+  border-radius: 10px;
+  }
+
+  #boton {
+    width: 200px;
+    height: 50px;
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+</style>
+
+<body>
+  <h1>Cambio de Estilo al Clic</h1>
+  <div id="contenedor">
+    <p>Este es el texto que se cambiará de color al hacer clic en el botón.</p>
+  </div>
+  <br>
+  <button id="boton">Cambiar Color</button>
+</body>
+
+<script>
+  const contenedor = document.getElementById("contenedor");
+  const boton = document.getElementById("boton");
+
+  boton.addEventListener("click", function () {
+    contenedor.style.backgroundColor = "#000000";
+    contenedor.style.color = "#ffffff";
+  });
+</script>
+
+</html>

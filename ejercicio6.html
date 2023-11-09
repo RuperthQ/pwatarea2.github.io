@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Lista de Tareas Interactiva</title>
+</head>
+
+<style>
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    margin-bottom: 10px;
+  }
+
+  input {
+    width: 200px;
+    height: 30px;
+    border: 1px solid #000000;
+    font-size: 20px;
+  }
+
+  button {
+    width: 100px;
+    height: 35px;
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+</style>
+
+<body>
+  <h1>Lista de Tareas Interactiva</h1>
+  <ul id="lista-tareas">
+  </ul>
+  <input type="text" id="nueva-tarea" placeholder="Nueva tarea">
+  <button id="agregar-tarea">Agregar</button>
+  <button id="eliminar-tarea">Eliminar</button>
+</body>
+
+<script>
+  const listaTareas = document.querySelector("#lista-tareas");
+    const nuevaTarea = document.querySelector("#nueva-tarea");
+    const agregarTarea = document.querySelector("#agregar-tarea");
+    const eliminarTarea = document.querySelector("#eliminar-tarea");
+
+    // Agregar nueva tarea
+    agregarTarea.addEventListener("click", function () {
+      const tarea = nuevaTarea.value;
+
+      if (tarea !== "") {
+        const li = document.createElement("li");
+        li.textContent = tarea;
+        listaTareas.appendChild(li);
+
+        nuevaTarea.value = "";
+      }
+    });
+
+    // Eliminar tarea
+    eliminarTarea.addEventListener("click", function () {
+      const li = listaTareas.querySelector("li:last-child");
+      if (li !== null) {
+        li.remove();
+      }
+    });
+</script>
+
+</html>

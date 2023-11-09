@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Validación de Formulario</title>
+</head>
+
+<style>
+  form {
+    width: 400px;
+    margin: 0 auto;
+  }
+
+  input {
+    width: 200px;
+    height: 30px;
+    border: 1px solid #000000;
+    font-size: 20px;
+  }
+</style>
+
+<body>
+  <h1>Validación de Formulario</h1>
+  <form action="index.html" method="post" onsubmit="validarFormulario()">
+    <input type="text" name="nombre" placeholder="Nombre">
+    <input type="email" name="correo" placeholder="Correo electrónico">
+    <input type="password" name="contraseña" placeholder="Contraseña">
+    <input type="submit" value="Enviar">
+  </form>
+</body>
+
+<script>
+  const formulario = document.querySelector("form");
+
+  formulario.addEventListener("submit", function(e) {
+    // Validar que se ingresen datos en todos los campos
+    const nombre = document.querySelector("input[name='nombre']");
+    const correo = document.querySelector("input[name='correo']");
+    const contraseña = document.querySelector("input[name='contraseña']");
+
+    if (nombre.value === "") {
+      e.preventDefault();
+      nombre.focus();
+      alert("Debe ingresar un nombre.");
+    } else if (correo.value === "") {
+      e.preventDefault();
+      correo.focus();
+      alert("Debe ingresar un correo electrónico.");
+    } else if (contraseña.value === "") {
+      e.preventDefault();
+      contraseña.focus();
+      alert("Debe ingresar una contraseña.");
+    }
+  });
+</script>
+
+</html>

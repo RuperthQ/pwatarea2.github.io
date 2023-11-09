@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Cambio de Imagen al Pasar el Ratón</title>
+</head>
+
+<style>
+  img {
+    width: 250px;
+    height: 200px;
+    border-radius: 10px;
+  }
+</style>
+
+<body>
+  <h1>Cambio de Imagen al Pasar el Ratón</h1>
+  <img src="https://www.weareamundsen.com/wp-content/uploads/2017/02/code-1076536_960_720.jpg" alt="Imagen 1">
+</body>
+
+<script>
+  const imagen = document.querySelector("img");
+
+  imagen.addEventListener("mouseover", function () {
+    imagen.src = "https://www.weareamundsen.com/wp-content/uploads/2017/02/code-1076536_960_720.jpg";
+  });
+
+  imagen.addEventListener("mouseout", function () {
+    imagen.src = "https://www.ikusi.com/mx/wp-content/uploads/sites/2/2022/06/post_thumbnail-4efabca9bd56b38edc0058c4ba006481.jpeg";
+  });
+</script>
+
+</html>

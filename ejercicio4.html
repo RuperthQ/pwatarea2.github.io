@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Reloj Analógico</title>
+</head>
+
+<style>
+  #reloj {
+    width: 400px;
+    height: 350px;
+    margin: 0 auto;
+    background-color: #000000;
+    border-radius: 10px;
+  }
+
+  #reloj, #esfera {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #esfera {
+    width: 300px;
+    height: 300px;
+    background-color: lightblue;
+    border-radius: 150px;
+    background-image: url('https://w7.pngwing.com/pngs/37/129/png-transparent-analog-clock-clock-seiko-watch-case-astron-jam-angle-white-furniture.png');
+    background-size: contain;
+  }
+
+  #aguja-hora, #aguja-minuto, #aguja-segundo {
+    width: 6px;
+    height: 100px;
+    transform-origin: center;
+  }
+
+  #aguja-hora {
+    background-color: #00000093;
+    transform: rotate(-30deg);
+    height: 200px;
+  }
+
+  #aguja-minuto {
+    /* background-color: #0f0f0fcd; */
+    background-image: url('https://w7.pngwing.com/pngs/108/694/png-transparent-clock-face-roman-numerals-thumbnail.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    /* height: 200px; */
+    transform: rotate(-60deg);
+  }
+
+  #aguja-segundo {
+    background-color: #000000;
+    transform: rotate(-90deg);
+    height: 160px;
+  }
+</style>
+
+<body>
+  <h1>Reloj Analógico</h1>
+  <div id="reloj">
+    <div id="esfera">
+      <img src="aguja-hora.png" id="aguja-hora">
+      <img src="aguja-minuto.png" id="aguja-minuto">
+      <img src="aguja-segundo.png" id="aguja-segundo">
+    </div>
+  </div>
+</body>
+
+<script>
+  const reloj = document.getElementById("reloj");
+    const esfera = document.getElementById("esfera");
+    const agujaHora = document.getElementById("aguja-hora");
+    const agujaMinuto = document.getElementById("aguja-minuto");
+    const agujaSegundo = document.getElementById("aguja-segundo");
+
+    setInterval(function () {
+      // Obtener la hora actual
+      const hora = new Date().getHours();
+      const minuto = new Date().getMinutes();
+      const segundo = new Date().getSeconds();
+
+      // Actualizar la posición de las manecillas
+      agujaHora.style.transform = "rotate(" + (hora * 30 + minuto / 2) + "deg)";
+      agujaMinuto.style.transform = "rotate(" + (minuto * 6) + "deg)";
+      agujaSegundo.style.transform = "rotate(" + (segundo * 6) + "deg)";
+    }, 1000);
+</script>
+
+</html>

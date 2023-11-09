@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora Simple</title>
+</head>
+
+<style>
+  #numero1, #numero2, #operador {
+    border-radius: 10px;
+  }
+
+  #calculadora {
+  width: 400px;
+  height: 200px;
+  margin: 0 auto;
+  }
+
+  #numero1, #numero2 {
+    width: 100px;
+    height: 30px;
+    border: 1px solid #000000;
+    font-size: 20px;
+  }
+
+  #operador {
+    width: 100px;
+    height: 30px;
+    border: 1px solid #000000;
+    font-size: 20px;
+  }
+
+  #calcular {
+    width: 100px;
+    height: 30px;
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 25px 0;
+  }
+
+</style>
+
+<body>
+  <h1>Calculadora Simple</h1>
+  <div id="calculadora">
+    <input type="text" id="numero1" placeholder="Número 1">
+    <select id="operador">
+      <option value="+">+</option>
+      <option value="-">-</option>
+      <option value="*">*</option>
+      <option value="/">/</option>
+    </select>
+    <input type="text" id="numero2" placeholder="Número 2">
+    <button id="calcular">Calcular</button><br>
+    <span id="resultado"></span>
+  </div>
+</body>
+
+<script>
+  const numero1 = document.getElementById("numero1");
+  const operador = document.getElementById("operador");
+  const numero2 = document.getElementById("numero2");
+  const calcular = document.getElementById("calcular");
+
+  calcular.addEventListener("click", function () {
+    const num1 = Number(numero1.value);
+    const num2 = Number(numero2.value);
+    const resultado = eval(num1 + " " + operador.value + " " + num2);
+    numero1.value = "";
+    numero2.value = "";
+    operador.value = "";
+    document.getElementById("resultado").textContent = resultado;
+  });
+</script>
+
+</html>

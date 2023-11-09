@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Menú de Navegación Desplegable</title>
+</head>
+
+<style>
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    margin-bottom: 10px;
+  }
+
+  a {
+    text-decoration: none;
+    color: #000000;
+    font-size: 20px;
+  }
+
+  ul ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    padding: 10px;
+  }
+
+  ul ul li {
+    margin-bottom: 0;
+  }
+
+  ul ul a {
+    padding: 5px;
+  }
+</style>
+
+<body>
+  <h1>Menú de Navegación Desplegable</h1>
+  <ul id="menu">
+    <li>
+      <a href="#">Inicio</a>
+      <ul>
+        <li><a href="#">Página 1</a></li>
+        <li><a href="#">Página 2</a></li>
+        <li><a href="#">Página 3</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">Acerca de</a>
+    </li>
+    <li>
+      <a href="#">Contacto</a>
+    </li>
+  </ul>
+</body>
+
+<script>
+  const menu = document.querySelector("#menu");
+
+  menu.addEventListener("mouseover", function (e) {
+    const target = e.target;
+
+    if (target.nodeName === "LI") {
+      const submenu = target.querySelector("ul");
+
+      if (submenu.style.display === "none") {
+        submenu.style.display = "block";
+      }
+    }
+  });
+</script>
+
+</html>
